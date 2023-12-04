@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>fsharp_noob</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="InputHelper.fs" />
+    <Compile Include="DigitReader.fs" />
+    <Compile Include="Day01\Day01.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+</Project>
