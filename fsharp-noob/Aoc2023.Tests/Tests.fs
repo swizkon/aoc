@@ -25,3 +25,9 @@ let ``Day01.part1.test_input`` () =
 let ``Day01.part2.test_input`` () =
     let numbers = Day01.solve_part_2 TestInputs.day_01_part_2_test_input
     Assert.Equal(281, numbers)
+
+    
+[<Fact>]
+let ``Day02.part1.test_input`` () =
+    let numbers = Day02.solve_part_1 Day02.day_02_part_1_test_input
+    Assert.Equal(8, numbers)
