@@ -25,7 +25,7 @@ let replacements =
     ]
 
     
-let reverse = InputHelper.reverse_string
+let reverse = InputParser.reverse_string
 
 let first_digit (inputString: string) : string =
     match Seq.tryFind System.Char.IsDigit inputString with

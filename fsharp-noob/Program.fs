@@ -28,7 +28,8 @@ open System.Text.RegularExpressions
 
 
 
-//let test_input = """
+
+//let day_01_part_1_test_input = """
 //1abc2
 //pqr3stu8vwx
 //a1b2c3d4e5f
@@ -36,7 +37,7 @@ open System.Text.RegularExpressions
 //"""
 
 
-let test_input = """
+let day_01_part_2_test_input = """
 two1nine
 eightwothree
 abcone2threexyz
@@ -46,7 +47,10 @@ zoneight234
 7pqrstsixteen
 """
 
-let rev_string = InputHelper.reverse_string
+Day01.solve_part_1 TestInputs.day_01_part_1_test_input
+    |> printfn "Day01.solve_part_1: %A"
+
+let rev_string = InputParser.reverse_string
 
 let first_digit (inputString: string) : string =
     match Seq.tryFind System.Char.IsDigit inputString with
@@ -60,12 +64,85 @@ let getFirstAndLastDigit (inputString: string) : string =
                     |> first_digit
     first + last
         
-"abc" |> rev_string |> printfn "%A"
 
-test_input
-    |> InputHelper.splitMultilineText
-    |> List.map getFirstAndLastDigit
+let numbersMap : Map<string, int> =
+    Map.ofList [
+        ("one", 1);
+        ("two", 2); 
+        ("three", 3);
+        ("four", 4);
+        ("five", 5);
+        ("six", 6);
+        ("seven", 7);
+        ("eight", 8);
+        ("nine", 9);
+        ("1", 1);
+        ("2", 2);
+        ("3", 3);
+        ("4", 4);
+        ("5", 5);
+        ("6", 6);
+        ("7", 7);
+        ("8", 8);
+        ("9", 9);
+        ]
+        
+let numbers =
+        [
+            "one"; "1";
+            "two"; "2";
+            "three"; "3";
+            "four"; "4";
+            "five"; "5";
+            "six"; "6";
+            "seven"; "7";
+            "eight"; "8";
+            "nine"; "9"
+        ]
+        
+type NumberPos =
+    { Number : string
+      First : int
+      Last : int }
+
+let get_digit_index (input: string) : NumberPos list =
+    numbers
+    |> List.map (fun (v) -> {
+        Number = string (Map.find v numbersMap); 
+        First = input.IndexOf(v); 
+        Last = input.LastIndexOf(v)})
+    |> List.filter (fun (v) -> v.First > -1 || v.Last > -1)
+    
+let get_first_digit_index (input: string) : string =
+    input
+    |> get_digit_index
+    |> List.sortBy (fun (v) -> v.First)
+    |> List.head
+    |> (fun (v) -> v.Number)
+    
+let get_last_digit_index (input: string) : string =
+    input
+    |> get_digit_index
+    |> List.sortByDescending (fun (v) -> v.Last)
+    |> List.head
+    |> (fun (v) -> v.Number)
+    
+let get_digits (input: string) : string =
+    let first = input |> get_first_digit_index 
+    let last = input |> get_last_digit_index 
+    first + last
+
+day_01_part_2_test_input
+    |> InputParser.splitMultilineText
+    |> List.map get_digits
     |> List.filter (fun item -> not (String.IsNullOrWhiteSpace item))
     |> List.map int
-    // |> List.sum
+    |> List.sum
     |> printfn "Input: %A"
+
+let s = "twone3eighthree6"
+
+s |> printfn "get_digit_index: %A"
+
+s |> get_digits 
+  |> printfn "get_digits: %A"

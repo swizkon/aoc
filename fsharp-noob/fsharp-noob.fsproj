@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="InputHelper.fs" />
+    <Compile Include="TestInputs.fs" />
+    <Compile Include="InputParser.fs" />
     <Compile Include="DigitReader.fs" />
     <Compile Include="Day01\Day01.fs" />
     <Compile Include="Program.fs" />
