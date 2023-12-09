@@ -38,7 +38,6 @@ let solve_part_1 (input: string) : int =
     |> List.sum
 
     
-
 let numbersMap : Map<string, int> =
     Map.ofList [
         ("one", 1);
@@ -61,6 +60,7 @@ let numbersMap : Map<string, int> =
         ("9", 9);
         ]
         
+
 let numbers =
         [
             "one"; "1";
@@ -80,30 +80,41 @@ type NumberPos =
       Last : int }
 
 let get_digit_index (input: string) : NumberPos list =
-    numbers
-    |> List.map (fun (v) -> {
-        Number = string (Map.find v numbersMap); 
-        First = input.IndexOf(v); 
-        Last = input.LastIndexOf(v)})
-    |> List.filter (fun (v) -> v.First > -1 || v.Last > -1)
+
+    let ff =  Map.map (fun k v -> {
+        Number = string v; 
+        First = input.IndexOf(string k); 
+        Last = input.LastIndexOf(string k)}) numbersMap
+        // |> Map.values
+
+    ff.Values
+        |> List.ofSeq
+        |> List.filter (fun (v) -> v.First > -1 || v.Last > -1)
+
+
+    //numbers
+    //|> List.map (fun (v) -> {
+    //    Number = string (Map.find v numbersMap); 
+    //    First = input.IndexOf(v); 
+    //    Last = input.LastIndexOf(v)})
+    //|> List.filter (fun (v) -> v.First > -1 || v.Last > -1)
     
-let get_first_digit_index (input: string) : string =
+let get_first_digit_index (input: NumberPos list) : string =
     input
-    |> get_digit_index
     |> List.sortBy (fun (v) -> v.First)
     |> List.head
     |> (fun (v) -> v.Number)
     
-let get_last_digit_index (input: string) : string =
+let get_last_digit_index (input: NumberPos list) : string =
     input
-    |> get_digit_index
     |> List.sortByDescending (fun (v) -> v.Last)
     |> List.head
     |> (fun (v) -> v.Number)
     
 let get_digits (input: string) : string =
-    let first = input |> get_first_digit_index 
-    let last = input |> get_last_digit_index 
+    let index = input |> get_digit_index
+    let first = index |> get_first_digit_index 
+    let last  = index |> get_last_digit_index 
     first + last
  
 let solve_part_2 (input: string) : int =

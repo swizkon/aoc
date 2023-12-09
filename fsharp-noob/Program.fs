@@ -146,3 +146,9 @@ s |> printfn "get_digit_index: %A"
 
 s |> get_digits 
   |> printfn "get_digits: %A"
+
+
+  
+day_01_part_2_test_input
+    |> Day01.solve_part_2
+    |> printfn "Input: %A"
