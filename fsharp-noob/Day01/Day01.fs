@@ -91,13 +91,6 @@ let get_digit_index (input: string) : NumberPos list =
         |> List.ofSeq
         |> List.filter (fun (v) -> v.First > -1 || v.Last > -1)
 
-
-    //numbers
-    //|> List.map (fun (v) -> {
-    //    Number = string (Map.find v numbersMap); 
-    //    First = input.IndexOf(v); 
-    //    Last = input.LastIndexOf(v)})
-    //|> List.filter (fun (v) -> v.First > -1 || v.Last > -1)
     
 let get_first_digit_index (input: NumberPos list) : string =
     input

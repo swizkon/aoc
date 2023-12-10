@@ -18,17 +18,15 @@ type Game =
       Red : int }
 
 let max_match (input: string, pattern: string) =
-
     let matches = Regex.Matches(input, pattern)
     let result = matches |> Seq.map (fun item -> item.Groups.[1].Value |> int)
 
-    let max =
-        match List.ofSeq result with
+    match List.ofSeq result with
         | [] -> 0
         | _ -> result |> Seq.max
-    max
+    
 
-let parseGame (input: string) : int =
+let parse_game (input: string) : Game =
     let game = Regex.Match(input, "Game (\d+): ")
     let id = game.Groups.[1].Value |> int
     
@@ -36,20 +34,22 @@ let parseGame (input: string) : int =
     let green = max_match(input, " (\d+) green")
     let red = max_match(input, " (\d+) red")
         
-    let game = { Id = id; Blue = blue; Green = green ; Red = red }
+    { Id = id; Blue = blue; Green = green ; Red = red }
     
-    let result =
-        match game with
-        | { Red = r ; Green = g ; Blue = b } when r > 12 || g > 13 || b > 14 -> 0
-        | _ -> id
-    result
-
 
 let solve_part_1 (input: string) : int =
-
     input
     |> InputParser.splitMultilineText
-    |> List.filter (fun item -> not (String.IsNullOrWhiteSpace item))
-    |> List.map parseGame
+    |> List.map parse_game
+    |> List.filter (fun i -> i.Red <= 12 && i.Green <= 13 && i.Blue <= 14)
+    |> List.map (fun i -> i.Id)
+    |> List.sum
+ 
+
+let solve_part_2 (input: string) : int =
+    input
+    |> InputParser.splitMultilineText
+    |> List.map parse_game
+    |> List.map (fun i -> i.Blue * i.Green * i.Red)
     |> List.sum
  
