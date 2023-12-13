@@ -1,6 +1,5 @@
 ﻿module Day02
 
-open System
 open System.Text.RegularExpressions
 
 let day_02_part_1_test_input = """
@@ -42,14 +41,12 @@ let solve_part_1 (input: string) : int =
     |> InputParser.splitMultilineText
     |> List.map parse_game
     |> List.filter (fun i -> i.Red <= 12 && i.Green <= 13 && i.Blue <= 14)
-    |> List.map (fun i -> i.Id)
-    |> List.sum
+    |> List.sumBy (fun i -> i.Id)
  
 
 let solve_part_2 (input: string) : int =
     input
     |> InputParser.splitMultilineText
     |> List.map parse_game
-    |> List.map (fun i -> i.Blue * i.Green * i.Red)
-    |> List.sum
+    |> List.sumBy (fun i -> i.Blue * i.Green * i.Red)
  

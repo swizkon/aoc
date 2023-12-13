@@ -37,3 +37,8 @@ let ``Day02.part1.test_input`` () =
 let ``Day02.part2.day_02_part_2`` () =
     let result = Day02.solve_part_2 Day02.day_02_part_1_test_input
     Assert.Equal(2286, result)
+
+[<Fact>]
+let ``Day03.day_03_part_1`` () =
+    let result = Day03.solve_part_1 Day03.test_input
+    Assert.Equal(4361, result)

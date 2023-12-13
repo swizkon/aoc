@@ -12,6 +12,7 @@
     <Compile Include="DigitReader.fs" />
     <Compile Include="Day01\Day01.fs" />
     <Compile Include="Day02\Day02.fs" />
+    <Compile Include="Day03\Day03.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 

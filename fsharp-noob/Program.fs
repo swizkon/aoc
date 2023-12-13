@@ -30,10 +30,6 @@ open System.Text.RegularExpressions
 //Day01.solve_part_1 
 //    |> printfn "Day01.solve_part_1: %A"
 
-//day_01_part_2_test_input
-//    |> Day01.solve_part_2
-//    |> printfn "day_01_part_2_test_input: %A"
 
-let result = Day02.solve_part_1 Day02.day_02_part_1_test_input
-
+let result = Day03.solve_part_1 Day03.test_input
 result |> printfn "day_02_part_1_test_input: %A"
