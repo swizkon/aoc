@@ -10,13 +10,9 @@ defmodule Day01 do
   def find_similarity(input) do
     {left, right} = input_to_lists(input)
 
-    # Find how many times numbers in left occur in right
-    res = left
-      |> map(&Enum.count(right, &1) * &1)
+    left
+      |> map(&(Enum.count(right, fn x -> x == &1 end) * &1))
       |> sum
-
-      IO.inspect(res, label: "res")
-
   end
 
   defp input_to_lists(input) do
@@ -31,19 +27,10 @@ defmodule Day01 do
     { Enum.map(l, &to_integer/1), Enum.map(r, &to_integer/1) }
   end
 
-  # defp map_to_integer({list, _}) do
-  #   Enum.map(list, &to_integer/1)
-  # end
-
-  # defp map_to_integer(list) do
-  #   Enum.map(list, &to_integer/1)
-  # end
-
-
 end
 
 
-file = File.read!("day-01-test.txt")
+file = File.read!("day-01.txt")
 
 calculate_difference = Day01.calculate_difference(file)
 IO.inspect(calculate_difference, label: "calculate_difference")
