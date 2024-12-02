@@ -31,5 +31,5 @@ open System.Text.RegularExpressions
 //    |> printfn "Day01.solve_part_1: %A"
 
 
-let result = Day03.solve_part_1 Day03.test_input
-result |> printfn "day_02_part_1_test_input: %A"
+let result = Day03.sum_gears Day03.test_input
+result |> printfn "sum_gears: %A"
