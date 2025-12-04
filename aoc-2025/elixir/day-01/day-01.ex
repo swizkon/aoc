@@ -1,49 +1,51 @@
 defmodule Day01 do
-  import Enum, only: [map: 2,  sort: 1, sum: 1]
+  import Enum, only: [map: 2]
   import String, only: [replace: 3, split: 3, to_integer: 1]
 
   def get_zero_positions(input) do
+    data = input
+      |> replace("L", "-")
+      |> replace("R", "+")
+      |> split("\r\n", trim: true)
+      |> map(&to_integer/1)
+      |> Enum.reduce([50], fn x, acc -> accumulator(x, acc) end)
+
+      IO.inspect(data |> Enum.reverse, label: "Positions")
+     data |> Enum.count(&(&1 == 0))
+  end
+
+  defp accumulator(rotation, state) do
+    curr_pos = hd(state)
+    new_pos = rem(curr_pos + rem(rotation, 100), 100)
+
+    # To get the count of zero passes, check if old and new positions cross zero
+    # This logic can be adjusted based on specific requirements
+    # if (curr_pos > 0 and new_pos <= 0) or (curr_pos < 0 and new_pos >= 0) do
+
+    [new_pos | state]
+  end
+
+  def get_zero_passes(input) do
+    initial_state = [50]
     input
       |> replace("L", "-")
       |> replace("R", "+")
       |> split("\r\n", trim: true)
       |> map(&to_integer/1)
-    # zip_with(left |> sort, right |> sort, fn l, r -> abs(l - r) end) |> sum
+      |> Enum.reduce(initial_state, fn x, acc -> acc_zero_passes(x, acc) end)
+      |> Enum.count(&(&1 == 0))
   end
 
-  # def find_similarity(input) do
-  #   {left, right} = input_to_lists(input)
+  defp acc_zero_passes(rotation, state) do
+    curr_pos = hd(state)
+    new_pos = rem(curr_pos + rem(rotation, 100), 100)
 
-  #   left
-  #     |> map(&(Enum.count(right, fn x -> x == &1 end) * &1))
-  #     |> sum
-  # end
+    # To get the count of zero passes, check if old and new positions cross zero
+    # This logic can be adjusted based on specific requirements
+    # if (curr_pos > 0 and new_pos <= 0) or (curr_pos < 0 and new_pos >= 0) do
 
-  defp input_to_lists(input) do
-    input
-      |> split("\r\n", trim: true)
-      |> map(&to_integer/1)
+    [new_pos | state]
   end
 
-  # defp convert_rotation_to_int(val) do
-  #   IO.puts "#{inspect val}"
-  #   <<direction::binary-size(1), clicks::binary>> = val
-  #   to_integer(clicks)
-  # end
-
-  # defp convert_rotation_to_int(<<"L", val::binary>>) do
-  #   Enum.map(val, &to_integer/1)
-  # end
-
-  # defp convert_rotation_to_int(val) do
-  #   Enum.map(val, &to_integer/1)
-  # end
-
-  # defp map_to_integer({l, r}) do
-
-  #   Enum.map(r, &to_integer/1)
-
-  #   #{ Enum.map(l, &to_integer/1), Enum.map(r, &to_integer/1) }
-  # end
 
 end

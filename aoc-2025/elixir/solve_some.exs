@@ -6,3 +6,6 @@ data = File.read!("../inputs/day-01-test.txt")
 
 result = Day01.get_zero_positions(data)
 IO.inspect(result, label: "get_zero_positions")
+
+result = Day01.get_zero_passes(data)
+IO.inspect(result, label: "get_zero_passes")
