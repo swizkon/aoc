@@ -15,6 +15,7 @@ defmodule Day02 do
   defp to_int_range(range) do
     [start_s, end_s] = String.split(range, "-")
     Enum.to_list(to_integer(start_s)..to_integer(end_s))
+      |> Enum.filter(& &1 > 9)
   end
 
   defp is_invalid_id(id) do
@@ -25,7 +26,6 @@ defmodule Day02 do
     left_half == right_half
   end
 
-
   defp is_any_invalido_id(id) do
     s_id = to_string(id)
 
@@ -34,9 +34,6 @@ defmodule Day02 do
     1..half_length
       |> Enum.map(&(is_any_invalid_id(&1, s_id)))
       |> Enum.any?()
-
-    # IO.puts("ID: #{s_id} - Results: #{inspect(data)}")
-# data
   end
 
   defp is_any_invalid_id(chunk_size, s_id) do
