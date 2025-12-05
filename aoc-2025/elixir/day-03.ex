@@ -26,33 +26,7 @@ defmodule Day03 do
     second = indexed
       |> Enum.drop(elem(first, 1) + 1)
       |> Enum.max_by(fn {value, _idx} -> value end)
-
-    IO.puts "second: #{inspect second}"
-
-    s = "#{elem(first, 0)}#{elem(second, 0)}"
-
-    S.to_integer(s)
+    S.to_integer("#{elem(first, 0)}#{elem(second, 0)}")
   end
-
-  # defp find_max(pair, state) do
-  #   [first, second] = pair
-  #   [first_max, second_max] = state
-
-  #   IO.puts("curr state:  [#{first_max}, #{second_max}] in: [#{first}, #{second}]")
-
-  #   first_max = if first > first_max, do: first, else: first_max
-  #   second_max = if second > second_max, do: second, else: second_max
-
-  #   IO.puts("new state:  [#{first_max}, #{second_max}]")
-  #   [first_max, second_max]
-  # end
-
-  # defp join_ints(d) do
-  #   d |> Enum.map(&Integer.to_string/1)
-  #     |> Enum.join("")
-  #     |> String.to_integer()
-  # end
-
-
 
 end
