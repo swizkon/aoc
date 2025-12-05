@@ -31,17 +31,10 @@
 
 
 
-a = [5,4] |> Enum.map(&Integer.to_string/1) |> Enum.join("") |> String.to_integer()
-
-
-IO.puts a
-
-
-
 Code.require_file("day-03.ex", __DIR__)
 
-data = File.read!("../inputs/day-03-test.txt")
-# data = File.read!("../inputs/day-03.txt")
+# data = File.read!("../inputs/day-03-test.txt")
+data = File.read!("../inputs/day-03.txt")
 result = Day03.sum_joltage(data)
 
 correct = result == 357
