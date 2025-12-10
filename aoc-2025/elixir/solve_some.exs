@@ -34,12 +34,12 @@
 Code.require_file("day-03.ex", __DIR__)
 
 # data = File.read!("../inputs/day-03-test.txt")
-data = File.read!("../inputs/day-03-test-debug.txt")
-# data = File.read!("../inputs/day-03.txt")
+# data = File.read!("../inputs/day-03-test-debug.txt")
+data = File.read!("../inputs/day-03.txt")
 
-result = Day03.sum_joltage_bigpack(data, 3)
+result = Day03.sum_joltage_bigpack(data, 12)
 
 # correct = result == 357
 correct = result == 3121910778619
-IO.inspect(result, label: "sum_joltage")
+IO.inspect(result, label: "sum_joltage_bigpack")
 IO.inspect(correct, label: "Correct?")
