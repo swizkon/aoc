@@ -2,13 +2,6 @@ defmodule Day03 do
   alias String, as: S
   alias Enum, as: E
 
-  # def sum_joltage(input) do
-  #   input
-  #     |> S.split("\r\n", trim: true)
-  #     |> E.map(&transform_data/1)
-  #     |> E.sum()
-  # end
-
   def sum_joltage_bigpack(input, pack_size) do
 
     IO.puts "input: #{inspect input} pack_size: #{inspect pack_size}"
