@@ -31,15 +31,21 @@
 
 
 
-Code.require_file("day-03.ex", __DIR__)
 
-# data = File.read!("../inputs/day-03-test.txt")
-# data = File.read!("../inputs/day-03-test-debug.txt")
-data = File.read!("../inputs/day-03.txt")
+#################################################################
+# DAY 04
 
-result = Day03.sum_joltage_bigpack(data, 12)
 
-# correct = result == 357
-correct = result == 3121910778619
-IO.inspect(result, label: "sum_joltage_bigpack")
+day = 4
+
+
+Code.require_file("day-04.ex", __DIR__)
+
+data = File.read!("../inputs/day-04-test.txt")
+# data = File.read!("../inputs/day-04.txt")
+
+result = Day04.count_paper_rolls(data)
+
+correct = result == 13
+IO.inspect(result, label: "count_paper_rolls")
 IO.inspect(correct, label: "Correct?")
