@@ -58,8 +58,8 @@
 
 Code.require_file("day-05.ex", __DIR__)
 
-# data = File.read!("../inputs/day-05-test.txt")
-data = File.read!("../inputs/day-05.txt")
+data = File.read!("../inputs/day-05-test.txt")
+# data = File.read!("../inputs/day-05.txt")
 
 result = Day05.all_fresh_ingredients(data)
 
