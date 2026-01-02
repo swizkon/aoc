@@ -36,16 +36,49 @@
 # DAY 04
 
 
-day = 4
+# day = 4
 
 
-Code.require_file("day-04.ex", __DIR__)
+# Code.require_file("day-04.ex", __DIR__)
 
-data = File.read!("../inputs/day-04-test.txt")
+# # data = File.read!("../inputs/day-04-test.txt")
 # data = File.read!("../inputs/day-04.txt")
 
-result = Day04.count_paper_rolls(data)
+# result = Day04.count_paper_rolls(data, 137 + 2)
 
-correct = result == 13
-IO.inspect(result, label: "count_paper_rolls")
+# correct = result == 13
+# IO.inspect(result, label: "count_paper_rolls")
+# IO.inspect(correct, label: "Correct?")
+
+
+
+
+#################################################################
+# DAY 05
+
+Code.require_file("day-05.ex", __DIR__)
+
+# data = File.read!("../inputs/day-05-test.txt")
+data = File.read!("../inputs/day-05.txt")
+
+result = Day05.all_fresh_ingredients(data)
+
+correct = result == 14
+IO.inspect(result, label: "all_fresh_ingredients")
 IO.inspect(correct, label: "Correct?")
+
+
+# 329866104274383
+# 329866104274383
+# 329866104274383
+# 329866104274383
+# 352681648086146
+
+
+# list = [{{3, 5}, 0}, {{10, 14}, 1}, {{12, 18}, 2}, {{16, 20}, 3}]
+
+# sums = list
+#   |> Enum.chunk_every(2, 1, [List.last(list)])
+#   |> Enum.map(fn [a, b] -> a + b end)
+
+# IO.inspect(sums)  # Output: [3, 5, 7]
