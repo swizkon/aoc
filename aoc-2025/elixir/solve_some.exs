@@ -35,20 +35,16 @@
 #################################################################
 # DAY 04
 
+Code.require_file("day-04.ex", __DIR__)
 
-# day = 4
+# data = File.read!("../inputs/day-04-test.txt")
+data = File.read!("../inputs/day-04.txt")
+row_size = 137 + 2
+result = Day04.total_removable_paper_rolls(data, row_size)
 
-
-# Code.require_file("day-04.ex", __DIR__)
-
-# # data = File.read!("../inputs/day-04-test.txt")
-# data = File.read!("../inputs/day-04.txt")
-
-# result = Day04.count_paper_rolls(data, 137 + 2)
-
-# correct = result == 13
-# IO.inspect(result, label: "count_paper_rolls")
-# IO.inspect(correct, label: "Correct?")
+correct = result == 43
+IO.inspect(result, label: "total_removable_paper_rolls")
+IO.inspect(correct, label: "Correct?")
 
 
 
@@ -79,13 +75,13 @@
 #################################################################
 # DAY 06
 
-Code.require_file("day-06.ex", __DIR__)
+# Code.require_file("day-06.ex", __DIR__)
 
-# data = File.read!("../inputs/day-06-test.txt")
-data = File.read!("../inputs/day-06.txt")
+# # data = File.read!("../inputs/day-06-test.txt")
+# data = File.read!("../inputs/day-06.txt")
 
-result = Day06.grand_total(data)
+# result = Day06.grand_total(data)
 
-correct = result == 4277556
-IO.inspect(result, label: "grand_total")
-IO.inspect(correct, label: "Correct?")
+# correct = result == 4277556
+# IO.inspect(result, label: "grand_total")
+# IO.inspect(correct, label: "Correct?")
