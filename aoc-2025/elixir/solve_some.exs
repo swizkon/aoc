@@ -56,29 +56,36 @@
 #################################################################
 # DAY 05
 
-Code.require_file("day-05.ex", __DIR__)
+# Code.require_file("day-05.ex", __DIR__)
 
-data = File.read!("../inputs/day-05-test.txt")
+# # data = File.read!("../inputs/day-05-test.txt")
 # data = File.read!("../inputs/day-05.txt")
 
-result = Day05.all_fresh_ingredients(data)
+# result = Day05.all_fresh_ingredients(data)
 
-correct = result == 14
-IO.inspect(result, label: "all_fresh_ingredients")
+# correct = result == 14
+# IO.inspect(result, label: "all_fresh_ingredients")
+# IO.inspect(correct, label: "Correct?")
+
+
+# # 329866104274383
+# # 329866104274383
+# # 329866104274383
+# # 329866104274383
+# # 352681648086146
+
+
+
+#################################################################
+# DAY 06
+
+Code.require_file("day-06.ex", __DIR__)
+
+# data = File.read!("../inputs/day-06-test.txt")
+data = File.read!("../inputs/day-06.txt")
+
+result = Day06.grand_total(data)
+
+correct = result == 4277556
+IO.inspect(result, label: "grand_total")
 IO.inspect(correct, label: "Correct?")
-
-
-# 329866104274383
-# 329866104274383
-# 329866104274383
-# 329866104274383
-# 352681648086146
-
-
-# list = [{{3, 5}, 0}, {{10, 14}, 1}, {{12, 18}, 2}, {{16, 20}, 3}]
-
-# sums = list
-#   |> Enum.chunk_every(2, 1, [List.last(list)])
-#   |> Enum.map(fn [a, b] -> a + b end)
-
-# IO.inspect(sums)  # Output: [3, 5, 7]
